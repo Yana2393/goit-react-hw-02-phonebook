@@ -1,16 +1,18 @@
+import React from 'react';
+import ContactForm from './ContactForm';
+
 export const App = () => {
   return (
     <div
       style={{
-        height: '100vh',
+        height: '75vh',
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
+        fontSize: 32,
       }}
     >
-      React homework template
+      <ContactForm />
     </div>
   );
 };
