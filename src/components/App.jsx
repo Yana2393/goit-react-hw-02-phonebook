@@ -23,8 +23,18 @@ export class App extends React.Component {
   };
 
   addNewContact = (newContact) => {
+    if (this.state.contacts.some(contact => contact.name === newContact.name)) {
+      return alert(`${newContact.name} is already in contacts!`);
+    };
     this.setState((oldState) => ({
       contacts: [...oldState.contacts, newContact],
+      filter: ''
+    }))
+  }
+
+  deleteContact = (contactId) => { 
+    this.setState((oldState) => ({
+      contacts: oldState.contacts.filter(c => c.id!== contactId),
       filter: ''
     }))
   }
@@ -43,7 +53,7 @@ export class App extends React.Component {
         <ContactForm addNewContact={this.addNewContact} />
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} filterChange={this.handleFilterChange} />
-        <ContactList filteredContact={this.filteredContact} />
+        <ContactList filteredContact={this.filteredContact} deleteContact={this.deleteContact} />
       </div>
     );
   }

@@ -14,14 +14,15 @@ class ContactItem extends React.Component {
         color: 'black',
       }}>
         {this.props.contact.name} : {this.props.contact.number}
-        <button style={{
-          backgroundColor: 'blue',
-          color: 'white',
-          border: 'none',
-          padding: '5px',
-          margin: '10px',
-          borderRadius: '5px',
-          cursor: 'pointer'
+        <button onClick={() => this.props.deleteContact(this.props.contact.id)}
+          style={{
+            backgroundColor: 'blue',
+            color: 'white',
+            border: 'none',
+            padding: '5px',
+            margin: '10px',
+            borderRadius: '5px',
+            cursor: 'pointer'
         }}>Delete</button>
       </li>
     );

@@ -23,9 +23,6 @@ class ContactForm extends React.Component {
       return;
     }
 
-    // if (this.props.contacts.some(contact => contact.name === name)) {
-    //   return alert(`${name} is already in contacts!`);
-    // }
 
     const newContact = {
       id: nanoid(),
@@ -44,7 +41,6 @@ class ContactForm extends React.Component {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'flex-start',
-          height: '100vh',
           width: '29vw',
           border: '1px solid black',
           borderRadius: '5px',

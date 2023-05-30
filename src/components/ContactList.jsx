@@ -9,7 +9,7 @@ class ContactList extends React.Component {
           padding: 0,
         }}>
             {this.props.filteredContact().map(contact => (
-                <ContactItem key={contact.id} contact={contact} />
+              <ContactItem key={contact.id} contact={contact} deleteContact={this.props.deleteContact} />
             ))}
         </ul>
     );
