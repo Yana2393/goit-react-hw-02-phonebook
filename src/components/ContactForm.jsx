@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 
 class ContactForm extends React.Component {
@@ -22,7 +23,6 @@ class ContactForm extends React.Component {
     if (name.trim() === '' || number.trim() === '') {
       return;
     }
-
 
     const newContact = {
       id: nanoid(),
@@ -95,5 +95,9 @@ class ContactForm extends React.Component {
     );
   }
 }
+
+ContactForm.propTypes = {
+  addNewContact: PropTypes.func.isRequired,
+};
 
 export default ContactForm;

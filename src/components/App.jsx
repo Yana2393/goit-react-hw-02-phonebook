@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
 import Filter from './Filter'
@@ -57,4 +58,16 @@ export class App extends React.Component {
       </div>
     );
   }
+}
+
+App.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired,
+      number: PropTypes.string.isRequired
+    })
+  ),
 };
+
+export default App;
