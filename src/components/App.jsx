@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ContactForm from './ContactForm';
-import ContactList from './ContactList';
-import Filter from './Filter'
+import ContactForm from './ContactForm/ContactForm';
+import ContactList from './ContactList/ContactList';
+import Filter from './Filter/Filter'
 
 export class App extends React.Component {
   state = {
@@ -29,14 +29,12 @@ export class App extends React.Component {
     };
     this.setState((oldState) => ({
       contacts: [...oldState.contacts, newContact],
-      filter: ''
     }))
   }
 
   deleteContact = (contactId) => { 
     this.setState((oldState) => ({
-      contacts: oldState.contacts.filter(c => c.id!== contactId),
-      filter: ''
+      contacts: oldState.contacts.filter(contact => contact.id!== contactId),
     }))
   }
 
@@ -54,7 +52,7 @@ export class App extends React.Component {
         <ContactForm addNewContact={this.addNewContact} />
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} filterChange={this.handleFilterChange} />
-        <ContactList filteredContact={this.filteredContact} deleteContact={this.deleteContact} />
+        <ContactList filteredContact={this.filteredContact()} deleteContact={this.deleteContact} />
       </div>
     );
   }

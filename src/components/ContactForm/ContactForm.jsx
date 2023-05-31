@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
+import css from './ContactForm.module.css'
 
 class ContactForm extends React.Component {
   state = {
@@ -8,12 +9,11 @@ class ContactForm extends React.Component {
     number: '',
   };
 
-  handleNameChange = event => {
-    this.setState({ name: event.target.value });
-  };
+  handleChange = event => {
+    const fieldName = event.target.name;
+    const fieldValue = event.target.value;
 
-  handleNumberChange = event => {
-    this.setState({ number: event.target.value });
+    this.setState({ [fieldName]: fieldValue });
   };
 
   handleSubmit = event => {
@@ -31,30 +31,18 @@ class ContactForm extends React.Component {
     };
 
     this.props.addNewContact(newContact);
+
+    this.setState({
+      name: '',
+      number: '',
+    });
   };
 
   render() {
     return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'flex-start',
-          width: '29vw',
-          border: '1px solid black',
-          borderRadius: '5px',
-        }}
-      >
-        <form
-          onSubmit={this.handleSubmit}
-          style={{
-            display: 'flex',
-            flexDirection: 'column',
-            justifyContent: 'center',
-            marginLeft: '20px',
-          }}
-        >
+      <div className={css.formWrapper}>
+        <form className={css.form}
+          onSubmit={this.handleSubmit}>
           <p>Name</p>
           <input
             type="text"
@@ -63,7 +51,7 @@ class ContactForm extends React.Component {
             title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
             required
             value={this.state.name}
-            onChange={this.handleNameChange}
+            onChange={this.handleChange}
           />
           <p>Number</p>
           <input
@@ -73,21 +61,9 @@ class ContactForm extends React.Component {
             title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
             required
             value={this.state.number}
-            onChange={this.handleNumberChange}
+            onChange={this.handleChange}
           />
-          <button
-            style={{
-              backgroundColor: 'blue',
-              color: 'white',
-              border: 'none',
-              padding: '5px',
-              margin: '10px',
-              marginLeft: 0,
-              borderRadius: '5px',
-              cursor: 'pointer',
-            }}
-            type="submit"
-          >
+          <button className={css.button} type="submit">
             Add Contact
           </button>
         </form>

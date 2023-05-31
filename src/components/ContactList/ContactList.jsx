@@ -1,14 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ContactItem from './ContactItem'
+import ContactItem from 'components/ContactItem/ContactItem';
 
 
-function ContactList({filteredContact, deleteContact}) {
+function ContactList({ filteredContact, deleteContact }) {
     return (
-      <ul style={{
-          padding: 0,
-        }}>
-            {filteredContact().map(contact => (
+      <ul>
+            {filteredContact.map(contact => (
               <ContactItem key={contact.id} contact={contact} deleteContact={deleteContact} />
             ))}
         </ul>
@@ -16,7 +14,7 @@ function ContactList({filteredContact, deleteContact}) {
 }
 
 ContactList.propTypes = {
-  filteredContact: PropTypes.func,
+  filteredContact: PropTypes.array,
   deleteContact: PropTypes.func,
 };
 

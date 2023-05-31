@@ -3,12 +3,7 @@ import PropTypes from 'prop-types';
 
 function Filter({filter, filterChange}) {
     return (
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-        }}
-      >
+      <div>
         <p>Find contacts by name</p>
         <input
           type="text"
