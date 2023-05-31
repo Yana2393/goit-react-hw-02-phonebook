@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class ContactItem extends React.Component {
-  render() {
+function ContactItem ({contact, deleteContact}) {
     return (
       <li style={{
         display: 'flex',
@@ -14,8 +13,8 @@ class ContactItem extends React.Component {
         borderRadius: '5px',
         color: 'black',
       }}>
-        {this.props.contact.name} : {this.props.contact.number}
-        <button onClick={() => this.props.deleteContact(this.props.contact.id)}
+        {contact.name} : {contact.number}
+        <button onClick={() => deleteContact(contact.id)}
           style={{
             backgroundColor: 'blue',
             color: 'white',
@@ -27,7 +26,12 @@ class ContactItem extends React.Component {
         }}>Delete</button>
       </li>
     );
-  }
+  
 }
+
+ContactItem.propTypes = {
+  contact: PropTypes.object.isRequired,
+  deleteContact: PropTypes.func.isRequired,
+};
 
 export default ContactItem;

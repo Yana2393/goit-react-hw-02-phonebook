@@ -97,7 +97,7 @@ class ContactForm extends React.Component {
 }
 
 ContactForm.propTypes = {
-  addNewContact: PropTypes.func.isRequired,
+  addNewContact: PropTypes.func,
 };
 
 export default ContactForm;

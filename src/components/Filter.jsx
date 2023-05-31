@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class Filter extends React.Component {
-  render() {
+function Filter({filter, filterChange}) {
     return (
       <div
         style={{
@@ -15,12 +14,16 @@ class Filter extends React.Component {
           type="text"
           name="filter"
           required
-          value={this.props.filter}
-          onChange={this.props.filterChange}
+          value={filter}
+          onChange={filterChange}
         />
       </div>
     );
-  }
 }
+
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+  filterChange: PropTypes.func.isRequired,
+};
 
 export default Filter;

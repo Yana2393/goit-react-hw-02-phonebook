@@ -1,19 +1,23 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ContactItem from './ContactItem'
 
 
-class ContactList extends React.Component {
-  render() {
+function ContactList({filteredContact, deleteContact}) {
     return (
       <ul style={{
           padding: 0,
         }}>
-            {this.props.filteredContact().map(contact => (
-              <ContactItem key={contact.id} contact={contact} deleteContact={this.props.deleteContact} />
+            {filteredContact().map(contact => (
+              <ContactItem key={contact.id} contact={contact} deleteContact={deleteContact} />
             ))}
         </ul>
     );
-  }
 }
+
+ContactList.propTypes = {
+  filteredContact: PropTypes.func,
+  deleteContact: PropTypes.func,
+};
 
 export default ContactList;
